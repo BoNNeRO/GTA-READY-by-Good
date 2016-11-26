@@ -1,0 +1,276 @@
+Imports Microsoft.VisualBasic
+Imports Microsoft.VisualBasic.CompilerServices
+Imports Microsoft.VisualBasic.Devices
+Imports ns0
+Imports System
+Imports System.ComponentModel
+Imports System.Diagnostics
+Imports System.Drawing
+Imports System.IO
+Imports System.Net
+Imports System.Net.NetworkInformation
+Imports System.Runtime.CompilerServices
+Imports System.Runtime.InteropServices
+Imports System.Security.Cryptography
+Imports System.Text
+Imports System.Windows.Forms
+
+Namespace WindowsApplication4
+	<DesignerGenerated>
+	Public Class Form2
+		Inherits Form
+		Private icontainer_0 As IContainer
+
+		Private string_0 As String
+
+		Private string_1 As String
+
+		Private object_0 As Object
+
+		Friend Overridable Property Button1 As Control2
+			Get
+				Return Me._Button1
+			End Get
+			<MethodImpl(MethodImplOptions.Synchronized)>
+			Set(ByVal value As ns0.Control2)
+				Dim eventHandler As System.EventHandler = New System.EventHandler(AddressOf Me.method_3)
+				Dim control2 As ns0.Control2 = Me._Button1
+				If (control2 IsNot Nothing) Then
+					RemoveHandler control2.Click,  eventHandler
+				End If
+				Me._Button1 = value
+				control2 = Me._Button1
+				If (control2 IsNot Nothing) Then
+					AddHandler control2.Click,  eventHandler
+				End If
+			End Set
+		End Property
+
+		Friend Overridable Property FlatStatusBar1 As Class10
+
+		Friend Overridable Property FormSkin1 As Control0
+			Get
+				Return Me._FormSkin1
+			End Get
+			<MethodImpl(MethodImplOptions.Synchronized)>
+			Set(ByVal value As ns0.Control0)
+				Dim eventHandler As System.EventHandler = New System.EventHandler(AddressOf Me.method_2)
+				Dim control0 As ns0.Control0 = Me._FormSkin1
+				If (control0 IsNot Nothing) Then
+					RemoveHandler control0.Click,  eventHandler
+				End If
+				Me._FormSkin1 = value
+				control0 = Me._FormSkin1
+				If (control0 IsNot Nothing) Then
+					AddHandler control0.Click,  eventHandler
+				End If
+			End Set
+		End Property
+
+		Friend Overridable Property Label3 As Label
+
+		Friend Overridable Property MonoFlat_Label1 As Class8
+
+		Friend Overridable Property MonoFlat_ThemeContainer1 As Control0
+
+		Friend Overridable Property TextBox1 As TextBox
+
+		Friend Overridable Property Timer1 As Timer
+
+		Friend Overridable Property Timer3 As Timer
+
+		Public Sub New()
+			MyBase.New()
+			AddHandler MyBase.Load,  New EventHandler(AddressOf Me.Form2_Load)
+			Me.string_0 = "1.2"
+			Me.string_1 = Class1.Class0_0.Name
+			Me.object_0 = 1
+			Me.InitializeComponent()
+		End Sub
+
+		Public Shared Function CheckForAPI() As Boolean
+			Dim flag As Boolean
+			Try
+				Using webClient As System.Net.WebClient = New System.Net.WebClient()
+					Using stream As System.IO.Stream = webClient.OpenRead("http://gta-ready.com/zO]s1T3hFdZ3sdth0")
+						flag = True
+					End Using
+				End Using
+			Catch exception As System.Exception
+				ProjectData.SetProjectError(exception)
+				flag = False
+				ProjectData.ClearProjectError()
+			End Try
+			Return flag
+		End Function
+
+		Public Shared Function CheckForInternetConnection() As Boolean
+			Dim flag As Boolean
+			Try
+				Using webClient As System.Net.WebClient = New System.Net.WebClient()
+					Using stream As System.IO.Stream = webClient.OpenRead("http://gta-ready.com/zO]s1T3hFdZ3sdth0")
+						flag = True
+					End Using
+				End Using
+			Catch exception As System.Exception
+				ProjectData.SetProjectError(exception)
+				Interaction.MsgBox("Nu am putut verifica conexiunea la internet." & VbCrLf & "Daca eroarea persista, te rugam sa ne contactezi pe livechat.", MsgBoxStyle.Critical, "Eroare")
+				Application.[Exit]()
+				flag = False
+				ProjectData.ClearProjectError()
+			End Try
+			Return flag
+		End Function
+
+		<DebuggerNonUserCode>
+		Protected Overrides Sub Dispose(ByVal disposing As Boolean)
+			Try
+				If (If(Not disposing, False, Me.icontainer_0 IsNot Nothing)) Then
+					Me.icontainer_0.Dispose()
+				End If
+			Finally
+				MyBase.Dispose(disposing)
+			End Try
+		End Sub
+
+		Private Sub Form2_Load(ByVal sender As Object, ByVal e As EventArgs)
+			Me.Timer1.Interval = 180000
+			Me.Timer1.Start()
+			Me.Timer3.Start()
+			Form2.CheckForInternetConnection()
+			If (Not Form2.CheckForAPI()) Then
+				Me.Label3.Text = "Cheat Offline"
+			Else
+				Me.Label3.Text = "Cheat Online"
+			End If
+		End Sub
+
+		Public Function getMacAddress() As Object
+			Return NetworkInterface.GetAllNetworkInterfaces()(0).GetPhysicalAddress().ToString()
+		End Function
+
+		<DebuggerStepThrough>
+		Private Sub InitializeComponent()
+			Me.icontainer_0 = New System.ComponentModel.Container()
+			Me.Timer1 = New Timer(Me.icontainer_0)
+			Me.Timer3 = New Timer(Me.icontainer_0)
+			Me.FormSkin1 = New Control0()
+			Me.MonoFlat_Label1 = New Class8()
+			Me.TextBox1 = New TextBox()
+			Me.Button1 = New Control2()
+			Me.Label3 = New Label()
+			Me.FormSkin1.SuspendLayout()
+			MyBase.SuspendLayout()
+			Me.FormSkin1.BackColor = Color.FromArgb(32, 41, 50)
+			Me.FormSkin1.Controls.Add(Me.MonoFlat_Label1)
+			Me.FormSkin1.Controls.Add(Me.TextBox1)
+			Me.FormSkin1.Controls.Add(Me.Button1)
+			Me.FormSkin1.Controls.Add(Me.Label3)
+			Me.FormSkin1.Dock = DockStyle.Fill
+			Me.FormSkin1.Font = New System.Drawing.Font("Segoe UI", 9!)
+			Me.FormSkin1.Location = New Point(0, 0)
+			Me.FormSkin1.Name = "FormSkin1"
+			Me.FormSkin1.Padding = New System.Windows.Forms.Padding(10, 70, 10, 9)
+			Me.FormSkin1.Boolean_2 = True
+			Me.FormSkin1.Boolean_0 = True
+			Me.FormSkin1.Size = New System.Drawing.Size(284, 261)
+			Me.FormSkin1.Boolean_1 = True
+			Me.FormSkin1.FormStartPosition_0 = FormStartPosition.WindowsDefaultLocation
+			Me.FormSkin1.TabIndex = 0
+			Me.FormSkin1.Text = "GTA Ready LOGIN"
+			Me.MonoFlat_Label1.AutoSize = True
+			Me.MonoFlat_Label1.BackColor = Color.Transparent
+			Me.MonoFlat_Label1.Font = New System.Drawing.Font("Segoe UI", 12!)
+			Me.MonoFlat_Label1.ForeColor = Color.FromArgb(116, 125, 132)
+			Me.MonoFlat_Label1.Location = New Point(115, 92)
+			Me.MonoFlat_Label1.Name = "MonoFlat_Label1"
+			Me.MonoFlat_Label1.Size = New System.Drawing.Size(35, 21)
+			Me.MonoFlat_Label1.TabIndex = 6
+			Me.MonoFlat_Label1.Text = "Key"
+			Me.TextBox1.Location = New Point(51, 118)
+			Me.TextBox1.Name = "TextBox1"
+			Me.TextBox1.PasswordChar = "*"C
+			Me.TextBox1.Size = New System.Drawing.Size(172, 23)
+			Me.TextBox1.TabIndex = 5
+			Me.Button1.BackColor = Color.Transparent
+			Me.Button1.Font = New System.Drawing.Font("Segoe UI", 12!)
+			Me.Button1.Image_0 = Nothing
+			Me.Button1.ContentAlignment_0 = ContentAlignment.MiddleLeft
+			Me.Button1.Location = New Point(64, 159)
+			Me.Button1.Name = "Button1"
+			Me.Button1.Size = New System.Drawing.Size(146, 41)
+			Me.Button1.TabIndex = 4
+			Me.Button1.Text = "Login"
+			Me.Button1.StringAlignment_0 = StringAlignment.Center
+			Me.Label3.AutoSize = True
+			Me.Label3.ForeColor = Color.Lime
+			Me.Label3.Location = New Point(13, 237)
+			Me.Label3.Name = "Label3"
+			Me.Label3.Size = New System.Drawing.Size(41, 15)
+			Me.Label3.TabIndex = 3
+			Me.Label3.Text = "Label3"
+			MyBase.ClientSize = New System.Drawing.Size(284, 261)
+			MyBase.Controls.Add(Me.FormSkin1)
+			MyBase.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
+			MyBase.Name = "Form2"
+			Me.Text = "GTA Ready LOGIN"
+			MyBase.TransparencyKey = Color.Fuchsia
+			Me.FormSkin1.ResumeLayout(False)
+			Me.FormSkin1.PerformLayout()
+			MyBase.ResumeLayout(False)
+		End Sub
+
+		<DllImport("winmm.dll", CharSet:=CharSet.Ansi, ExactSpelling:=True, SetLastError:=True)>
+		Private Shared Function mciSendStringA(ByRef string_2 As String, ByRef string_3 As String, ByVal int_0 As Integer, ByVal int_1 As Integer) As Integer
+		End Function
+
+		Private Sub method_0(ByVal sender As Object, ByVal e As EventArgs)
+		End Sub
+
+		Private Sub method_1(ByVal sender As Object, ByVal e As EventArgs)
+			Interaction.MsgBox("Sesiunea ta de login a expirat!", MsgBoxStyle.OkOnly, "Session")
+			Application.[Exit]()
+		End Sub
+
+		Private Sub method_2(ByVal sender As Object, ByVal e As EventArgs)
+		End Sub
+
+		Private Sub method_3(ByVal sender As Object, ByVal e As EventArgs)
+			Dim webClient As System.Net.WebClient = New System.Net.WebClient()
+			Dim numArray As Byte() = DirectCast(NewLateBinding.LateGet(SHA256.Create(), Nothing, "ComputeHash", New Object() { NewLateBinding.LateGet(Encoding.UTF8, Nothing, "GetBytes", New Object() { Me.getMacAddress() }, Nothing, Nothing, Nothing) }, Nothing, Nothing, Nothing), Byte())
+			Dim stringBuilder As System.Text.StringBuilder = New System.Text.StringBuilder()
+			Dim length As Integer = CInt(numArray.Length) - 1
+			Dim num As Integer = 0
+			Do
+				stringBuilder.Append(numArray(num).ToString("x2"))
+				num = num + 1
+			Loop While num <= length
+			Dim str As String = webClient.DownloadString(String.Concat(New String() { "http://gta-ready.com/zO]s1T3hFdZ3sdth0/gtareadynewcheat_92.php?key=", Me.TextBox1.Text, "&set=0&hash=", stringBuilder.ToString(), "&userpc=", Me.string_1, "&version=", Me.string_0 }))
+			If (Operators.CompareString(str, "", False) = 0) Then
+				Interaction.MsgBox("Eroare necunoscuta!" & VbCrLf & "Motive:" & VbCrLf & "- Outdated API" & VbCrLf & "- Outdated Cheat", MsgBoxStyle.OkOnly, "Unknown Query")
+			ElseIf (str.Contains("Key banat")) Then
+				Interaction.MsgBox("Key-ul tau este blocat!" & VbCrLf & "Key-ul tau a fost blocat din motive de securitate. Daca esti proprietarul si vrei sa deblochezi key-ul te asteptam pe livechat!", MsgBoxStyle.OkOnly, "Key blocat")
+			ElseIf (Operators.CompareString(Me.Label3.Text, "Offline", False) = 0 Or str.Contains("Connection failed") Or Not Form2.CheckForInternetConnection()) Then
+				Interaction.MsgBox("Din pacate, API-ul este Offline sau nu s-a putut realiza conexiunea." & VbCrLf & "Te rugam sa revii mai tarziu! Daca problema persista, te rugam sa ne contactezi pe livechat", MsgBoxStyle.Critical, "Error")
+			ElseIf (str.Contains("Cheia a fost folosita cu succes")) Then
+				Interaction.MsgBox("Key-ul tau este valid!", MsgBoxStyle.OkOnly, "Success")
+				Me.Timer1.[Stop]()
+				MyBase.Hide()
+				Class1.Class2_0.Form1_0.Show()
+			ElseIf (Not str.Contains("Cheia este deja folosita de cineva")) Then
+				Dim str1 As String = Conversions.ToString(Me.object_0)
+				Me.object_0 = Operators.AddObject(Me.object_0, 1)
+				Interaction.MsgBox(String.Concat("Key-ul introdus nu este bun! Incercari: ", str1, "/3"), MsgBoxStyle.OkOnly, "Fail")
+				If (Conversions.ToDouble(str1) = 3) Then
+					Interaction.MsgBox("Ai ajuns la 3/3 incercari! CD-ul va fi scos pentru a preveni atacurile de tip 'bruteforce'", MsgBoxStyle.OkOnly, "Fail")
+					Application.[Exit]()
+				End If
+			Else
+				Interaction.MsgBox("Acest key este folosit deja!", MsgBoxStyle.OkOnly, "Duplicate")
+			End If
+		End Sub
+
+		Private Sub method_4(ByVal sender As Object, ByVal e As EventArgs)
+		End Sub
+	End Class
+End Namespace
